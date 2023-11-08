@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code</title>
+    <link rel="stylesheet" href="qr.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <a class="link" href="../Weather/weather.html">Click Here For weather app</a>
+        <p>Enter Something</p>
+        <input type="text" placeholder="Text or URL" id="qrText">
+        <div class="imgBox">
+            <img src="" id="qrImg" />
+        </div>
+        <button id="btn" onclick="generateQR()">Generate QR code</button>
+
+        <a class="link" href="../AI_Image/imageAI.html">Click Here For Image Generator</a>
+    </div>
+
+</body>
+
+<script>
+
+    function generateQR() {
+        const qrImg = document.getElementById("qrImg")
+        const qrText = document.getElementById("qrText").value.trim();
+        if (!qrText) {
+            alert("Please Enter something");
+            return;
+        }
+
+        qrImg.src = "images/loading.gif"
+        setTimeout(() => {
+            qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrText}`;
+        }, 1000)
+
+
+    }
+
+
+
+</script>
+
+</html>
